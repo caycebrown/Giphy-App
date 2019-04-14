@@ -1,7 +1,25 @@
-$("#search").on("click", function() {
-    search = $('#input').val();
-    queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=6bB7JsvsgPeTsEMLMDI1ZgJGeu9SqoD6";
+var terms = ['ironman', 'thor', 'drax', 'thanos', 'starlord',];
 
+function makeButton(text) {
+    $('#buttons').append(`<button class="btn btn-primary search" term="${text}">${text}</button>`)
+}
+
+terms.map(makeButton);
+
+$("body").on("click", ".search", function() {
+    search = $('#input').val() || $(this).attr('term');
+    queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=6bB7JsvsgPeTsEMLMDI1ZgJGeu9SqoD6";
+    
+    //--------Eliminates the creation of duplicate buttons--------------------
+    if (terms.includes(search)) {
+        //do nothing
+    } else {
+        $('#buttons').append(`<button class="btn btn-primary search" term="${search}">${search}</button>`)
+        terms.push(search);
+    }
+    //--------Clears previous gifs(if any) and input field--------------
+    $("#results-bank").html('');
+    $('#input').val(null);
 
     $.ajax({
         url : queryURL,
@@ -9,12 +27,12 @@ $("#search").on("click", function() {
     })
     
       .then(function(response) {
-        response.data.map(myFunction);
-        console.log(response)
+        response.data.map(gifRender);
       });
   });
 
-  function myFunction(obj){
+
+  function gifRender(obj){
       animate = obj.images.fixed_height.url;
       still = obj.images.fixed_height_still.url;
       $newGif = `<div><img id="gif" data-state="animate" data-animate="${animate}" data-still="${still}" src="${still}"></div>`
