@@ -1,7 +1,7 @@
 var terms = ['ironman', 'thor', 'drax', 'thanos', 'starlord',];
 
 function makeButton(text) {
-    $('#buttons').append(`<button class="btn btn-primary search" term="${text}">${text}</button>`)
+    $('#buttons').append(`<button class="btn btn-secondary search" term="${text}">${text}</button>`)
 }
 
 terms.map(makeButton);
@@ -14,7 +14,7 @@ $("body").on("click", ".search", function() {
     if (terms.includes(search)) {
         //do nothing
     } else {
-        $('#buttons').append(`<button class="btn btn-primary search" term="${search}">${search}</button>`)
+        $('#buttons').append(`<button class="btn btn-secondary search" term="${search}">${search}</button>`)
         terms.push(search);
     }
     //--------Clears previous gifs(if any) and input field--------------
