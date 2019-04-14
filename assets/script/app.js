@@ -27,6 +27,7 @@ $("body").on("click", ".search", function() {
     })
     
       .then(function(response) {
+        console.log(response);
         response.data.map(gifRender);
       });
   });
@@ -35,7 +36,8 @@ $("body").on("click", ".search", function() {
   function gifRender(obj){
       animate = obj.images.fixed_height.url;
       still = obj.images.fixed_height_still.url;
-      $newGif = `<div><img id="gif" data-state="animate" data-animate="${animate}" data-still="${still}" src="${still}"></div>`
+      rating = obj.rating;
+      $newGif = `<div class="col"><p>${rating}</p><img id="gif" data-state="animate" data-animate="${animate}" data-still="${still}" src="${still}"></div>`
       $("#results-bank").prepend($newGif);
   };
 
