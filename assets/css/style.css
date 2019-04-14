@@ -1,6 +1,5 @@
 body {
-    margin-left: 20px;
-    overflow-x: hidden;
+    background-image: url('../images/what-the-hex.png');
 }
 
 
@@ -8,3 +7,21 @@ button {
     margin: 10px;
 }
 
+.row {
+    justify-content: center;
+}
+
+#header {
+    background-color: rgb(32, 32, 32);
+}
+
+h1 {
+    line-height: 2;
+    color: #4286f4;
+    font-family: 'Alfa Slab One', cursive;
+    letter-spacing: 1px;
+}
+
+#input {
+    height: 40px;
+}

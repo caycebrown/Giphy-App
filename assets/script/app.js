@@ -8,7 +8,7 @@ terms.map(makeButton);
 
 $("body").on("click", ".search", function() {
     search = $('#input').val() || $(this).attr('term');
-    queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=6bB7JsvsgPeTsEMLMDI1ZgJGeu9SqoD6";
+    queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&rating=pg-13&api_key=6bB7JsvsgPeTsEMLMDI1ZgJGeu9SqoD6";
     
     //--------Eliminates the creation of duplicate buttons--------------------
     if (terms.includes(search)) {
