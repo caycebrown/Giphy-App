@@ -79,7 +79,7 @@ $('body').on('click', '#unselected', function(){
 
 $('body').on('click', '#selected', function(){
     toRemoveId = $(this).data('id');//grabs the id we can use to target specific gifs and their "favorites" section clone
-    unSelect = $("#selected[data-id='" + toRemoveId +"']");
+    unSelect = $("#results-bank #selected[data-id='" + toRemoveId +"']");
     unFavorite = $("#favorites #selected[data-id='" + toRemoveId +"']").closest('div');
     unFavorite.remove();
     unSelect.attr('id', 'unselected');
